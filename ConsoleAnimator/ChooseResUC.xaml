@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="ConsoleAnimator.ChooseResUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ConsoleAnimator"
+             mc:Ignorable="d" 
+             d:DesignHeight="150" d:DesignWidth="325">
+    <Grid>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="25,25,0,0" TextWrapping="Wrap" Text="Choose Width and Height in Characters" VerticalAlignment="Top"/>
+        <Label x:Name="Widthlbl" Content="Width:"  HorizontalAlignment="Left" Margin="25,50,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="WidthTbx" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="25" Margin="75,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75"/>
+        <Label x:Name="HeightLbl" Content="Height:" HorizontalAlignment="Left" Margin="175,50,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="HeightTbx" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="25" Margin="225,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="CreateGridBtn" Content="Create Grid" HorizontalAlignment="Left" Margin="225,100,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="CreateGridBtn_Click"/>
+    </Grid>
+</UserControl>
