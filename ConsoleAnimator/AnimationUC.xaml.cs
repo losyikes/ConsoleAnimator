@@ -22,42 +22,16 @@ namespace ConsoleAnimator
     /// </summary>
     public partial class AnimationUC : UserControl
     {
-        delegate void LayoutUpdate();
-        public AnimationUC()
-        {
-            //InitializeComponent();
-            InitializeComponent();
-            AnimationControls animationControl = new AnimationControls(20, 20, this);
-            
-            this.Width = animationControl.ControlWidth;
-            this.Height = animationControl.ControlHeight;
-            Grid animationControlGrid = animationControl.DrawGrid();
-            Application.Current.MainWindow.Height = animationControl.ControlHeight + 20;
-            Application.Current.MainWindow.Width = animationControl.ControlWidth + 20;
-            
-            
-        }
+        
         public AnimationUC(int width, int height)
         {
             InitializeComponent();
             AnimationControls animationControl = new AnimationControls(width, height, this);
-
             this.Width = animationControl.ControlWidth;
             this.Height = animationControl.ControlHeight;
-            Grid animationControlGrid = animationControl.DrawGrid();
             Application.Current.MainWindow.Height = animationControl.ControlHeight + 20;
             Application.Current.MainWindow.Width = animationControl.ControlWidth + 20;
-            //AnimationControls animationControl = new AnimationControls(width,height, this);
-            //InitializeComponent();
-            //this.Width = animationControl.ControlWidth;
-            //this.Height = animationControl.ControlHeight;
-            ////AnimationUCContentGrid.Children.Add(animationControl.DrawGrid());
-            //Grid animationControlGrid = animationControl.DrawGrid();
-            //Application.Current.MainWindow.Height = animationControl.ControlWidth + 20;
-            //Application.Current.MainWindow.Width = animationControl.ControlHeight + 20;
-            ////LayoutUpdate updateLayout = () => this.AnimationUCContentGrid.UpdateLayout();
-            //this.Dispatcher.Invoke(new Action(() => AnimationUCContentGrid.Children.Add(animationControlGrid)),  DispatcherPriority.Render);
-            //bool visibility = this.AnimationUCContentGrid.IsVisible;
+            
         }
     }
 }

@@ -17,7 +17,7 @@ using System.Runtime.CompilerServices;
 namespace ConsoleAnimator
 {
 
-    class AnimationControls /*: INotifyPropertyChanged*/
+    class AnimationControls 
     {
         delegate void LayoutUpdate();
         public static int w {get;set;}
@@ -33,8 +33,6 @@ namespace ConsoleAnimator
             animationGridCharHeight = charHeight;
             animationGrid = DrawGrid();
             animationGrid.Background = Brushes.Gray;
-            
-            
             UCcontrol.Dispatcher.Invoke(new Action(() => UCcontrol.AnimationUCContentGrid.Children.Add(animationGrid)), DispatcherPriority.Render);
             
         }
@@ -44,24 +42,7 @@ namespace ConsoleAnimator
         public int ControlHeight { get; set; }
         int animationGridCharWidth;
         int animationGridCharHeight;
-        List<Label> animationLblList = new List<Label>();
         
-        public SolidColorBrush CurrentColor
-        {
-            get
-            {
-                return this.currentColor;
-            }
-            set
-            {
-                this.currentColor = value;
-                
-            }
-        }
-
-        
-
-
         public Grid DrawGrid()
         {
             Grid grid = new Grid();
@@ -78,14 +59,10 @@ namespace ConsoleAnimator
             grid.Children.Add(colorControlGrid);
             grid.Children.Add(animationGrid);
             return grid;
-            
         }
-        public Grid GetAnimationGrid()
+        Grid GetAnimationGrid()
         {
             Grid grid = new Grid();
-            
-            List<Label> lblList = new List<Label>();
-
             grid.Width = (animationGridCharWidth * 25);
             grid.Height = (animationGridCharHeight * 23);
             grid.HorizontalAlignment = HorizontalAlignment.Left;
@@ -95,11 +72,9 @@ namespace ConsoleAnimator
             int marginTop = 0;
             for (int i = 0; i < animationGridCharWidth; i++)
             {
-                
                 marginLeft = 0;
                 for (int j = 0; j < animationGridCharHeight; j++)
                 {
-                   
                     lblNameCounter++;
                     Label lbl = new Label();
                     lbl.Width = 20;
@@ -110,14 +85,11 @@ namespace ConsoleAnimator
                     lbl.Margin = new Thickness(marginLeft, marginTop, 0, 0);
                     lbl.HorizontalAlignment = HorizontalAlignment.Left;
                     lbl.VerticalAlignment = VerticalAlignment.Top;
-                    lbl.Tag = lblNameCounter.ToString();
                     lbl.BorderThickness = new Thickness(1);
                     lbl.BorderBrush = Brushes.Black;
                     lbl.MouseDown += new MouseButtonEventHandler(OnAnimationLblMouseDown);
-                    lblList.Add(lbl);
                     grid.Children.Add(lbl);
                     marginLeft += 22;
-                    
                 }
                 marginTop += 22;
             }
@@ -125,10 +97,9 @@ namespace ConsoleAnimator
             return grid;
         }
 
-        private void OnAnimationLblMouseDown(object sender, MouseButtonEventArgs e)
+        void OnAnimationLblMouseDown(object sender, MouseButtonEventArgs e)
         {
             Label senderLbl = (Label)sender;
-            string senderlblTag = (string)senderLbl.Tag;
             senderLbl.Background = currentColor;
             senderLbl.Dispatcher.Invoke(DispatcherPriority.Render, EmptyDelegate);
             
@@ -170,10 +141,11 @@ namespace ConsoleAnimator
             return grid;
         }
 
-        private void OnColorLblClick(object sender, EventArgs e)
+        void OnColorLblClick(object sender, EventArgs e)
         {
             Label lbl = (Label)sender;
-            CurrentColor = (SolidColorBrush)lbl.Tag;
+            // i chose to set the color in the tag instead of just using the background Property so it should be easier to convert to console colors
+            currentColor = (SolidColorBrush)lbl.Tag;
         }
 
         List<SolidColorBrush> getColorList()
