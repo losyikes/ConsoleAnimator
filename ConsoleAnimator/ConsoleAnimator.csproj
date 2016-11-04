@@ -69,6 +69,7 @@
     </Page>
     <Compile Include="AnimationControls.cs" />
     <Compile Include="AnimationFrame.cs" />
+    <Compile Include="AnimationGrid.cs" />
     <Compile Include="AnimationUC.xaml.cs">
       <DependentUpon>AnimationUC.xaml</DependentUpon>
     </Compile>
@@ -79,6 +80,7 @@
     <Compile Include="ChooseResUC.xaml.cs">
       <DependentUpon>ChooseResUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ColorGrid.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

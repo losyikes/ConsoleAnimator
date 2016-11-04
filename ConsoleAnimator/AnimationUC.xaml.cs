@@ -22,7 +22,10 @@ namespace ConsoleAnimator
     /// </summary>
     public partial class AnimationUC : UserControl
     {
-        
+        public AnimationUC()
+        {
+            InitializeComponent();
+        }
         public AnimationUC(int width, int height)
         {
             InitializeComponent();
