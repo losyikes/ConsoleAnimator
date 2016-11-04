@@ -42,7 +42,6 @@ namespace ConsoleAnimator
                     lbl.Background = Brushes.Black;
                     lbl.Width = 20;
                     lbl.Height = 20;
-                    //lbl.Padding = new Thickness(0);
                     lbl.HorizontalContentAlignment = HorizontalAlignment.Center;
                     lbl.VerticalContentAlignment = VerticalAlignment.Center;
                     lbl.Margin = new Thickness(marginLeft, marginTop, 0, 0);

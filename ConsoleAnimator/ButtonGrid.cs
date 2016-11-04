@@ -39,7 +39,6 @@ namespace ConsoleAnimator
 
         private void RenderBtn_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            // drawthumbnail and add it to thumbsgrid
             animationControls.ThumbGrid.AddThumbnailToGrid();
         }
         

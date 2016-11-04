@@ -16,21 +16,16 @@ namespace ConsoleAnimator
         public List<Thumbnail> thumbnailList = new List<Thumbnail>();
         public ThumbsGrid(AnimationControls aControls)
         {
-            
             this.animationControls = aControls;
             this.Width = aControls.AnimationGrid.CharacterWidth*4 + 20;
             this.HorizontalAlignment = HorizontalAlignment.Left;
             this.VerticalAlignment = VerticalAlignment.Top;
-
-            
-
         }
         public void AddThumbnailToGrid()
         {
             Thumbnail thumb = new Thumbnail(animationControls.AnimationGrid.GetPixelList(), animationControls);
             thumbnailList.Add(thumb);
             this.Dispatcher.Invoke(new Action(() => this.Children.Add(thumb)), DispatcherPriority.Render);
-            //this.Children.Add(thumb);
         }
         
         

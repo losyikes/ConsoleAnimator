@@ -24,7 +24,6 @@ namespace ConsoleAnimator
         public ColorGrid ChooseColorGrid { get; }
         public AnimationGrid AnimationGrid { get; }
         public ThumbsGrid ThumbGrid { get; }
-        //public AnimationUC AnimationUC { get; }
         public AnimationControls(int charWidth, int charHeight, AnimationUC UCcontrol)
         {
             Grid animationControlsgrid = new Grid();
@@ -42,7 +41,6 @@ namespace ConsoleAnimator
 
             ControlHeight = Convert.ToInt32(animationGrid.Height + chooseColorGrid.Height + 20);
             ControlWidth = Convert.ToInt32(animationGrid.Width + btnGrid.Width + thumbGrid.Width + 20);
-            
             
             animationControlsgrid.Background = Brushes.Gray;
             animationControlsgrid.Height = ControlHeight;

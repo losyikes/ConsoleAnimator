@@ -19,7 +19,6 @@ namespace ConsoleAnimator
             drawLabels();
             animationControls = aControls;
             animationControls.currentColor = Brushes.Black;
-            
         }
         void drawLabels()
         {
