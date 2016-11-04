@@ -6,7 +6,7 @@
         xmlns:controls="clr-namespace:ConsoleAnimator"
         xmlns:local="clr-namespace:ConsoleAnimator"
         mc:Ignorable="d"
-        Title="ConsoleAnimator" Height="175" Width="350">
+        Title="ConsoleAnimator" Height="175" Width="350" Background="Gray">
     <Grid x:Name="MainContentGrid" HorizontalAlignment="Left" VerticalAlignment="Top">
             <controls:ChooseResUC />
         

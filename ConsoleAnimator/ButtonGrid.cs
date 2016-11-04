@@ -27,7 +27,10 @@ namespace ConsoleAnimator
             renderBtn.Height = 25;
             renderBtn.VerticalAlignment = VerticalAlignment.Top;
             renderBtn.HorizontalAlignment = HorizontalAlignment.Left;
-            renderBtn.Background = Brushes.Red;
+            renderBtn.BorderBrush = Brushes.Black;
+            renderBtn.BorderThickness = new Thickness(1);
+            renderBtn.Background = null;
+            renderBtn.Padding = new Thickness(10, 0, 10, 0);
             renderBtn.Click += RenderBtn_Click;
             renderBtn.Margin = new Thickness(10, 0,0,0);
             this.Children.Add(renderBtn);
@@ -36,7 +39,8 @@ namespace ConsoleAnimator
 
         private void RenderBtn_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            
+            // drawthumbnail and add it to thumbsgrid
+            animationControls.ThumbGrid.AddThumbnailToGrid();
         }
         
     }

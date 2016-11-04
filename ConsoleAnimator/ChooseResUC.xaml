@@ -9,9 +9,9 @@
     <Grid>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="25,25,0,0" TextWrapping="Wrap" Text="Choose Width and Height in Characters" VerticalAlignment="Top"/>
         <Label x:Name="Widthlbl" Content="Width:"  HorizontalAlignment="Left" Margin="25,50,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="WidthTbx" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="25" Margin="75,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75"/>
+        <TextBox x:Name="WidthTbx" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="25" Margin="75,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" Background="Gray" BorderBrush="Black"/>
         <Label x:Name="HeightLbl" Content="Height:" HorizontalAlignment="Left" Margin="175,50,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="HeightTbx" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="25" Margin="225,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="CreateGridBtn" Content="Create Grid" HorizontalAlignment="Left" Margin="225,100,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="CreateGridBtn_Click"/>
+        <TextBox x:Name="HeightTbx" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="25" Margin="225,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" Background="Gray" BorderBrush="Black"/>
+        <Button x:Name="CreateGridBtn" Content="Create Grid" HorizontalAlignment="Left" Margin="225,100,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="CreateGridBtn_Click" BorderBrush="Black" Background="Gray"/>
     </Grid>
 </UserControl>

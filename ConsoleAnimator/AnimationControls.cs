@@ -23,7 +23,8 @@ namespace ConsoleAnimator
         public SolidColorBrush currentColor { get; set; }
         public ColorGrid ChooseColorGrid { get; }
         public AnimationGrid AnimationGrid { get; }
-        
+        public ThumbsGrid ThumbGrid { get; }
+        //public AnimationUC AnimationUC { get; }
         public AnimationControls(int charWidth, int charHeight, AnimationUC UCcontrol)
         {
             Grid animationControlsgrid = new Grid();
@@ -35,9 +36,12 @@ namespace ConsoleAnimator
             animationGrid.Margin = new Thickness(5, (chooseColorGrid.Height), 0, 0);
             ButtonGrid btnGrid = new ButtonGrid(this);
             btnGrid.Margin = new Thickness(animationGrid.Width, chooseColorGrid.Height, 0,0);
+            ThumbsGrid thumbGrid = new ThumbsGrid(this);
+            this.ThumbGrid = thumbGrid;
+            thumbGrid.Margin = new Thickness(animationGrid.Width + btnGrid.Width, 5, 0, 0);
 
             ControlHeight = Convert.ToInt32(animationGrid.Height + chooseColorGrid.Height + 20);
-            ControlWidth = Convert.ToInt32(animationGrid.Width + btnGrid.Width + 20);
+            ControlWidth = Convert.ToInt32(animationGrid.Width + btnGrid.Width + thumbGrid.Width + 20);
             
             
             animationControlsgrid.Background = Brushes.Gray;
@@ -48,9 +52,11 @@ namespace ConsoleAnimator
             animationControlsgrid.Children.Add(chooseColorGrid);
             animationControlsgrid.Children.Add(animationGrid);
             animationControlsgrid.Children.Add(btnGrid);
+            animationControlsgrid.Children.Add(thumbGrid);
             UCcontrol.Dispatcher.Invoke(new Action(() => UCcontrol.AnimationUCContentGrid.Children.Add(animationControlsgrid)), DispatcherPriority.Render);
             
         }
+
         public int ControlWidth { get; set; }
         public int ControlHeight { get; set; }
     }

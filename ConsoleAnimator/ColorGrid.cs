@@ -38,7 +38,7 @@ namespace ConsoleAnimator
                 Label lbl = new Label();
                 lbl.Width = 20;
                 lbl.Height = 20;
-                lbl.Margin = new Thickness(i * 25, marginTop, 0, 0);
+                lbl.Margin = new Thickness(i * 22, marginTop, 0, 0);
                 lbl.Background = color;
                 lbl.HorizontalAlignment = HorizontalAlignment.Left;
                 lbl.VerticalAlignment = VerticalAlignment.Top;
@@ -50,7 +50,7 @@ namespace ConsoleAnimator
                 i++;
                 if (i % lineChange == 0)
                 {
-                    marginTop += 25;
+                    marginTop += 22;
                     i = 0;
                 }
             }

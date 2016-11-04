@@ -15,14 +15,17 @@ namespace ConsoleAnimator
     {
         private static Action EmptyDelegate = delegate () { };
         AnimationControls animationControls;
-        int characterWidth;
-        int characterHeight;
+        public int CharacterWidth { get; }
+        public int CharacterHeight { get; }
         public AnimationGrid(int charWidth, int charHeight, AnimationControls aControls)
         {
             animationControls = aControls;
-            Grid grid = new Grid();
-            this.Width = (charWidth * 25);
-            this.Height = (charHeight * 23);
+            
+            this.CharacterWidth = charWidth;
+            this.CharacterHeight = charHeight;
+            this.Width = (charWidth * 22);
+            this.Height = (charHeight * 22);
+            
             this.HorizontalAlignment = HorizontalAlignment.Left;
             this.VerticalAlignment = VerticalAlignment.Top;
             int lblNameCounter = 0;
@@ -34,10 +37,12 @@ namespace ConsoleAnimator
                 for (int j = 0; j < charHeight; j++)
                 {
                     lblNameCounter++;
+                    
                     Label lbl = new Label();
+                    lbl.Background = Brushes.Black;
                     lbl.Width = 20;
                     lbl.Height = 20;
-                    lbl.Padding = new Thickness(0);
+                    //lbl.Padding = new Thickness(0);
                     lbl.HorizontalContentAlignment = HorizontalAlignment.Center;
                     lbl.VerticalContentAlignment = VerticalAlignment.Center;
                     lbl.Margin = new Thickness(marginLeft, marginTop, 0, 0);
@@ -53,7 +58,7 @@ namespace ConsoleAnimator
             }
 
         }
-        List<Pixel> getPixelList()
+        public List<Pixel> GetPixelList()
         {
             List<Pixel> pixelList = new List<Pixel>();
             int i = 0;
@@ -62,9 +67,9 @@ namespace ConsoleAnimator
             {
                 i++;
                 int x = i;
-                Pixel pixel = new Pixel(x, y,(SolidColorBrush)lbl.Tag);
+                Pixel pixel = new Pixel(x, y,(SolidColorBrush)lbl.Background);
                 pixelList.Add(pixel);
-                if(i == this.characterWidth)
+                if(i == this.CharacterWidth)
                 {
                     i = 0;
                     y++;
@@ -77,6 +82,13 @@ namespace ConsoleAnimator
             Label senderLbl = (Label)sender;
             senderLbl.Background = animationControls.currentColor;
             senderLbl.Dispatcher.Invoke(DispatcherPriority.Render, EmptyDelegate);
+        }
+        void ClearGrid()
+        {
+            foreach(Label lbl in this.Children)
+            {
+                lbl.Background = Brushes.Black;
+            }
         }
     }
 }
