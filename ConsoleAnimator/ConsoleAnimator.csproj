@@ -57,7 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="Pixel.cs" />
     <Compile Include="Thumbnail.cs" />
-    <Compile Include="ThumbsGrid.cs" />
+    <Compile Include="Grids\ThumbsGrid.cs" />
     <Page Include="AnimationUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -72,7 +72,7 @@
     </Page>
     <Compile Include="AnimationControls.cs" />
     <Compile Include="AnimationFrame.cs" />
-    <Compile Include="AnimationGrid.cs" />
+    <Compile Include="Grids\AnimationGrid.cs" />
     <Compile Include="AnimationUC.xaml.cs">
       <DependentUpon>AnimationUC.xaml</DependentUpon>
     </Compile>
@@ -80,7 +80,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ButtonGrid.cs" />
+    <Compile Include="Grids\ButtonGrid.cs" />
     <Compile Include="ChooseResUC.xaml.cs">
       <DependentUpon>ChooseResUC.xaml</DependentUpon>
     </Compile>

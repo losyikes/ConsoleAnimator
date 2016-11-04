@@ -35,12 +35,28 @@ namespace ConsoleAnimator
             animationGrid.Margin = new Thickness(5, (chooseColorGrid.Height), 0, 0);
             ButtonGrid btnGrid = new ButtonGrid(this);
             btnGrid.Margin = new Thickness(animationGrid.Width, chooseColorGrid.Height, 0,0);
+            ScrollViewer scrollViewer = new ScrollViewer();
+            
             ThumbsGrid thumbGrid = new ThumbsGrid(this);
+            scrollViewer.Width = thumbGrid.Width+10;
+            scrollViewer.Height = thumbGrid.Height;
+            scrollViewer.Content = thumbGrid;
+            scrollViewer.HorizontalAlignment = HorizontalAlignment.Left;
+            scrollViewer.VerticalAlignment = VerticalAlignment.Top;
+            scrollViewer.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
+            scrollViewer.BorderBrush = Brushes.Black;
+            scrollViewer.BorderThickness = new Thickness(1);
             this.ThumbGrid = thumbGrid;
-            thumbGrid.Margin = new Thickness(animationGrid.Width + btnGrid.Width, 5, 0, 0);
-
+            
+            Border border = new Border();
+            border.BorderThickness = new Thickness(1);
+            border.BorderBrush = Brushes.Black;
+            border.Height = scrollViewer.Height;
+            border.Width = scrollViewer.Width;
+            border.Child = scrollViewer;
+            border.Margin = new Thickness(animationGrid.Width + btnGrid.Width, 5, 0, 0);
             ControlHeight = Convert.ToInt32(animationGrid.Height + chooseColorGrid.Height + 20);
-            ControlWidth = Convert.ToInt32(animationGrid.Width + btnGrid.Width + thumbGrid.Width + 20);
+            ControlWidth = Convert.ToInt32(animationGrid.Width + btnGrid.Width + border.Width + 20);
             
             animationControlsgrid.Background = Brushes.Gray;
             animationControlsgrid.Height = ControlHeight;
@@ -50,7 +66,7 @@ namespace ConsoleAnimator
             animationControlsgrid.Children.Add(chooseColorGrid);
             animationControlsgrid.Children.Add(animationGrid);
             animationControlsgrid.Children.Add(btnGrid);
-            animationControlsgrid.Children.Add(thumbGrid);
+            animationControlsgrid.Children.Add(border);
             UCcontrol.Dispatcher.Invoke(new Action(() => UCcontrol.AnimationUCContentGrid.Children.Add(animationControlsgrid)), DispatcherPriority.Render);
             
         }

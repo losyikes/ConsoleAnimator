@@ -82,12 +82,13 @@ namespace ConsoleAnimator
             senderLbl.Background = animationControls.currentColor;
             senderLbl.Dispatcher.Invoke(DispatcherPriority.Render, EmptyDelegate);
         }
-        void ClearGrid()
+        public void ClearGrid()
         {
             foreach(Label lbl in this.Children)
             {
                 lbl.Background = Brushes.Black;
             }
+            this.Dispatcher.Invoke(DispatcherPriority.Render, EmptyDelegate);
         }
     }
 }

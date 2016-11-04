@@ -13,7 +13,6 @@ namespace ConsoleAnimator
     class Thumbnail : Canvas
     {
         public List<Pixel> PixelList { get; set; }
-        public int MarginTop { get; set; }
         public Thumbnail(List<Pixel> pixelList, AnimationControls aControls)
         {
             PixelList = pixelList;
@@ -40,12 +39,12 @@ namespace ConsoleAnimator
                 this.Children.Add(rectangle);
             }
         }
-        Rectangle drawPixel(int x,int y, SolidColorBrush color)
+        Rectangle drawPixel(int x,int y, SolidColorBrush fill)
         {
             Rectangle r = new Rectangle();
             r.Width = 4;
             r.Height = 4;
-            r.Fill = color;
+            r.Fill = fill;
             
             return r;
 
