@@ -11,7 +11,7 @@ using System.Windows.Threading;
 
 namespace ConsoleAnimator
 {
-    class AnimationGrid : Grid
+    public class AnimationGrid : Grid
     {
         private static Action EmptyDelegate = delegate () { };
         AnimationControls animationControls;

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows;
 using System.Windows.Media;
+using Microsoft.Win32;
 
 namespace ConsoleAnimator
 {
@@ -22,6 +23,7 @@ namespace ConsoleAnimator
         void drawButtons()
         {
             int buttonWidth = 100;
+            int buttonHeight = 25;
 
             Button renderBtn = new Button();
             renderBtn.Content = "Render Thumbnail";
@@ -40,7 +42,7 @@ namespace ConsoleAnimator
             Button clearGridBtn = new Button();
             clearGridBtn.Content = "Clear Grid";
             clearGridBtn.Width = buttonWidth;
-            clearGridBtn.Height = 25;
+            clearGridBtn.Height = buttonHeight;
             clearGridBtn.VerticalAlignment = VerticalAlignment.Top;
             clearGridBtn.HorizontalAlignment = HorizontalAlignment.Left;
             clearGridBtn.BorderBrush = Brushes.Black;
@@ -48,9 +50,47 @@ namespace ConsoleAnimator
             clearGridBtn.Background = null;
             clearGridBtn.Padding = new Thickness(10, 0, 10, 0);
             clearGridBtn.Click += ClearGridBtn_Click;
-            clearGridBtn.Margin = new Thickness(10, renderBtn.Height + 10 , 0, 0);
+            clearGridBtn.Margin = new Thickness(10, buttonHeight + 10 , 0, 0);
             this.Children.Add(clearGridBtn);
+
+            Button saveThumbBtn = new Button();
+            saveThumbBtn.Content = "Clear Grid";
+            saveThumbBtn.Width = buttonWidth;
+            saveThumbBtn.Height = buttonHeight;
+            saveThumbBtn.VerticalAlignment = VerticalAlignment.Top;
+            saveThumbBtn.HorizontalAlignment = HorizontalAlignment.Left;
+            saveThumbBtn.BorderBrush = Brushes.Black;
+            saveThumbBtn.BorderThickness = new Thickness(1);
+            saveThumbBtn.Background = null;
+            saveThumbBtn.Padding = new Thickness(10, 0, 10, 0);
+            saveThumbBtn.Click += SaveThumbBtn_Click;
+            saveThumbBtn.Margin = new Thickness(10, buttonHeight * 2 + 10, 0, 0);
+            this.Children.Add(saveThumbBtn);
+
             this.Width = renderBtn.Width + 10;
+        }
+
+        private void SaveThumbBtn_Click(object sender, RoutedEventArgs e)
+        {
+            string filename = "";
+            // Configure save file dialog box
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.FileName = "Animation-1"; // Default file name
+            dlg.DefaultExt = ".json"; // Default file extension
+            dlg.Filter = "Json Files (.json)|*.json"; // Filter files by extension
+
+            // Show save file dialog box
+            Nullable<bool> result = dlg.ShowDialog();
+
+            // Process save file dialog box results
+            if (result == true)
+            {
+                // Save document
+                filename = dlg.FileName;
+            }
+            FileHandler fileHandler = new FileHandler();
+            List<Thumbnail> thumbnailList = animationControls.ThumbGrid.thumbnailList;
+            fileHandler.SaveThumbnails(thumbnailList, filename);
         }
 
         private void ClearGridBtn_Click(object sender, RoutedEventArgs e)

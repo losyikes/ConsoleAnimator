@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,13 +10,14 @@ using System.Windows.Threading;
 
 namespace ConsoleAnimator
 {
-    class ThumbsGrid : Grid
+    public class ThumbsGrid : Grid
     {
         private static Action EmptyDelegate = delegate () { };
         AnimationControls animationControls;
-        public List<Thumbnail> thumbnailList = new List<Thumbnail>();
+        public List<Thumbnail> thumbnailList { get; set; }
         public ThumbsGrid(AnimationControls aControls)
         {
+            thumbnailList = new List<Thumbnail>();
             this.animationControls = aControls;
             this.Width = aControls.AnimationGrid.CharacterWidth*4 + 20;
             this.HorizontalAlignment = HorizontalAlignment.Left;

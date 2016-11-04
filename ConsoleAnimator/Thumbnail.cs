@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,9 +11,15 @@ using System.Windows.Shapes;
 
 namespace ConsoleAnimator
 {
-    class Thumbnail : Canvas
+    public class Thumbnail : Canvas
     {
         public List<Pixel> PixelList { get; set; }
+       
+        public Thumbnail()
+        {
+            
+        }
+        
         public Thumbnail(List<Pixel> pixelList, AnimationControls aControls)
         {
             PixelList = pixelList;
@@ -25,6 +32,7 @@ namespace ConsoleAnimator
             int marginTop = aControls.ThumbGrid.thumbnailList.Count * ((int)this.Height + 10) + 20;
             this.Margin = new Thickness(10, marginTop, 0, 0);
         }
+        
         void drawThumbnail()
         {
             int marginLeft = 0;
@@ -39,6 +47,7 @@ namespace ConsoleAnimator
                 this.Children.Add(rectangle);
             }
         }
+        
         Rectangle drawPixel(int x,int y, SolidColorBrush fill)
         {
             Rectangle r = new Rectangle();

@@ -7,7 +7,7 @@ using System.Windows.Media;
 
 namespace ConsoleAnimator
 {
-    class Pixel
+    public class Pixel
     {
         public int X { get; set; }
         public int Y { get; set; }
@@ -17,6 +17,11 @@ namespace ConsoleAnimator
             this.X = x;
             this.Y = y;
             this.Color = color;
+            
+        }
+        public Pixel()
+        {
+
         }
     }
 }

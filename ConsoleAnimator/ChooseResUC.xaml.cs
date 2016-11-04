@@ -29,8 +29,11 @@ namespace ConsoleAnimator
         {
             int width;
             int height;
+            WidthTbx.Text = "20";
+            HeightTbx.Text = "20";
             if (int.TryParse(WidthTbx.Text, out width) && int.TryParse(HeightTbx.Text, out height))
             {
+                
                 Window main = Window.GetWindow(this);
                 Grid parentGrid = (Grid)VisualTreeHelper.GetParent(this);
                 this.Visibility = Visibility.Hidden;

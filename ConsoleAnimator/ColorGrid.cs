@@ -10,7 +10,7 @@ using System.Windows.Media;
 
 namespace ConsoleAnimator
 {
-    class ColorGrid : Grid
+    public class ColorGrid : Grid
     {
         
         AnimationControls animationControls;

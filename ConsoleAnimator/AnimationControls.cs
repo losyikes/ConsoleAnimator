@@ -17,7 +17,7 @@ using System.Runtime.CompilerServices;
 namespace ConsoleAnimator
 {
 
-    class AnimationControls 
+    public class AnimationControls 
     {
         delegate void LayoutUpdate();
         public SolidColorBrush currentColor { get; set; }
