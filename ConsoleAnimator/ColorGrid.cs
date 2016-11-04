@@ -21,7 +21,7 @@ namespace ConsoleAnimator
             animationControls.currentColor = Brushes.Black;
             
         }
-        List<Label> drawLabels()
+        void drawLabels()
         {
             List<Label> lblList = new List<Label>();
             List<SolidColorBrush> colorList = getColorList();
@@ -54,7 +54,7 @@ namespace ConsoleAnimator
                     i = 0;
                 }
             }
-            return lblList;
+            
         }
         List<SolidColorBrush> getColorList()
         {

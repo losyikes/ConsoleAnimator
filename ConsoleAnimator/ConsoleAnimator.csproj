@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ThumbsGrid.cs" />
     <Page Include="AnimationUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -77,6 +78,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ButtonGrid.cs" />
     <Compile Include="ChooseResUC.xaml.cs">
       <DependentUpon>ChooseResUC.xaml</DependentUpon>
     </Compile>

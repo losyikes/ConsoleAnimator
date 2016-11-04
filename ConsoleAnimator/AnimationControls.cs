@@ -21,19 +21,25 @@ namespace ConsoleAnimator
     {
         delegate void LayoutUpdate();
         public SolidColorBrush currentColor { get; set; }
-        
+        public ColorGrid ChooseColorGrid { get; }
+        public AnimationGrid AnimationGrid { get; }
         
         public AnimationControls(int charWidth, int charHeight, AnimationUC UCcontrol)
         {
-            Grid animationGrid = new AnimationGrid(charWidth, charHeight, this);
-            Grid chooseColorGrid = new ColorGrid(this);
+            Grid animationControlsgrid = new Grid();
+            AnimationGrid animationGrid = new AnimationGrid(charWidth, charHeight, this);
+            this.AnimationGrid = animationGrid;
+            ColorGrid chooseColorGrid = new ColorGrid(this);
+            this.ChooseColorGrid = chooseColorGrid;
             chooseColorGrid.Margin = new Thickness(5, 5, 0, 0);
             animationGrid.Margin = new Thickness(5, (chooseColorGrid.Height), 0, 0);
+            ButtonGrid btnGrid = new ButtonGrid(this);
+            btnGrid.Margin = new Thickness(animationGrid.Width, chooseColorGrid.Height, 0,0);
 
             ControlHeight = Convert.ToInt32(animationGrid.Height + chooseColorGrid.Height + 20);
-            ControlWidth = Convert.ToInt32(animationGrid.Width + 20);
-
-            Grid animationControlsgrid = new Grid();
+            ControlWidth = Convert.ToInt32(animationGrid.Width + btnGrid.Width + 20);
+            
+            
             animationControlsgrid.Background = Brushes.Gray;
             animationControlsgrid.Height = ControlHeight;
             animationControlsgrid.Width = ControlWidth;
@@ -41,6 +47,7 @@ namespace ConsoleAnimator
             animationControlsgrid.VerticalAlignment = VerticalAlignment.Top;
             animationControlsgrid.Children.Add(chooseColorGrid);
             animationControlsgrid.Children.Add(animationGrid);
+            animationControlsgrid.Children.Add(btnGrid);
             UCcontrol.Dispatcher.Invoke(new Action(() => UCcontrol.AnimationUCContentGrid.Children.Add(animationControlsgrid)), DispatcherPriority.Render);
             
         }
