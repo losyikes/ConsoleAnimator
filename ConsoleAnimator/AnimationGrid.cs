@@ -15,6 +15,8 @@ namespace ConsoleAnimator
     {
         private static Action EmptyDelegate = delegate () { };
         AnimationControls animationControls;
+        int characterWidth;
+        int characterHeight;
         public AnimationGrid(int charWidth, int charHeight, AnimationControls aControls)
         {
             animationControls = aControls;
@@ -50,6 +52,25 @@ namespace ConsoleAnimator
                 marginTop += 22;
             }
 
+        }
+        List<Pixel> getPixelList()
+        {
+            List<Pixel> pixelList = new List<Pixel>();
+            int i = 0;
+            int y = 1;
+            foreach(Label lbl in this.Children)
+            {
+                i++;
+                int x = i;
+                Pixel pixel = new Pixel(x, y,(SolidColorBrush)lbl.Tag);
+                pixelList.Add(pixel);
+                if(i == this.characterWidth)
+                {
+                    i = 0;
+                    y++;
+                }
+            }
+            return pixelList;
         }
         void OnAnimationLblMouseDown(object sender, MouseButtonEventArgs e)
         {
