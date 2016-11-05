@@ -127,6 +127,12 @@
   <ItemGroup>
     <Resource Include="Icon1.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Player\Player.csproj">
+      <Project>{51fafd4a-67a2-4baa-92c2-37e6f7fd3feb}</Project>
+      <Name>Player</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

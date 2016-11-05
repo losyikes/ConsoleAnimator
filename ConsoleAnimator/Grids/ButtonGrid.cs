@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows;
 using System.Windows.Media;
+using System.Diagnostics;
 using Microsoft.Win32;
 
 namespace ConsoleAnimator
 {
     class ButtonGrid : Grid
     {
+        FileHandler fileHandler = new FileHandler();
         AnimationControls animationControls;
         public ButtonGrid(AnimationControls aControls)
         {
@@ -22,11 +24,11 @@ namespace ConsoleAnimator
         }
         void drawButtons()
         {
-            int buttonWidth = 100;
+            int buttonWidth = 125;
             int buttonHeight = 25;
 
             Button renderBtn = new Button();
-            renderBtn.Content = "Render Thumbnail";
+            renderBtn.Content = "Add Frame";
             renderBtn.Width = buttonWidth;
             renderBtn.Height = 25;
             renderBtn.VerticalAlignment = VerticalAlignment.Top;
@@ -54,7 +56,7 @@ namespace ConsoleAnimator
             this.Children.Add(clearGridBtn);
 
             Button saveThumbBtn = new Button();
-            saveThumbBtn.Content = "Clear Grid";
+            saveThumbBtn.Content = "Save Frames";
             saveThumbBtn.Width = buttonWidth;
             saveThumbBtn.Height = buttonHeight;
             saveThumbBtn.VerticalAlignment = VerticalAlignment.Top;
@@ -64,10 +66,29 @@ namespace ConsoleAnimator
             saveThumbBtn.Background = null;
             saveThumbBtn.Padding = new Thickness(10, 0, 10, 0);
             saveThumbBtn.Click += SaveThumbBtn_Click;
-            saveThumbBtn.Margin = new Thickness(10, buttonHeight * 2 + 10, 0, 0);
+            saveThumbBtn.Margin = new Thickness(10, buttonHeight * 2 + 20, 0, 0);
             this.Children.Add(saveThumbBtn);
 
+            Button runAnimationBtn = new Button();
+            runAnimationBtn.Content = "Run Animation";
+            runAnimationBtn.Width = buttonWidth;
+            runAnimationBtn.Height = buttonHeight;
+            runAnimationBtn.VerticalAlignment = VerticalAlignment.Top;
+            runAnimationBtn.HorizontalAlignment = HorizontalAlignment.Left;
+            runAnimationBtn.BorderBrush = Brushes.Black;
+            runAnimationBtn.BorderThickness = new Thickness(1);
+            runAnimationBtn.Background = null;
+            runAnimationBtn.Padding = new Thickness(10, 0, 10, 0);
+            runAnimationBtn.Click += RunAnimationBtn_Click;
+            runAnimationBtn.Margin = new Thickness(10, buttonHeight * 3 + 30, 0, 0);
+            this.Children.Add(runAnimationBtn);
+
             this.Width = renderBtn.Width + 10;
+        }
+
+        private void RunAnimationBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start("Player.Exe", fileHandler.Path);
         }
 
         private void SaveThumbBtn_Click(object sender, RoutedEventArgs e)
@@ -88,7 +109,8 @@ namespace ConsoleAnimator
                 // Save document
                 filename = dlg.FileName;
             }
-            FileHandler fileHandler = new FileHandler();
+            
+            fileHandler.Path = filename;
             List<Thumbnail> thumbnailList = animationControls.ThumbGrid.thumbnailList;
             fileHandler.SaveThumbnails(thumbnailList, filename);
         }
