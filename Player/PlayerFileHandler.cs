@@ -8,10 +8,10 @@ using System.IO;
 
 namespace Player
 {
-    class FileHandler
+    class PlayerFileHandler
     {
         
-        public FileHandler() { }
+        public PlayerFileHandler() { }
         //public void SaveThumbnails(List<Thumbnail> thumbnailList, string fileName)
         //{
         //    List<Frame> frameList = new List<Frame>();

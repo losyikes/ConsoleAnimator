@@ -15,6 +15,7 @@ namespace ConsoleAnimator
     {
         FileHandler fileHandler = new FileHandler();
         AnimationControls animationControls;
+        List<Thumbnail> thumbnailList = new List<Thumbnail>();
         public ButtonGrid(AnimationControls aControls)
         {
             animationControls = aControls;
@@ -111,7 +112,7 @@ namespace ConsoleAnimator
             }
             
             fileHandler.Path = filename;
-            List<Thumbnail> thumbnailList = animationControls.ThumbGrid.thumbnailList;
+            thumbnailList = animationControls.ThumbGrid.thumbnailList;
             fileHandler.SaveThumbnails(thumbnailList, filename);
         }
 

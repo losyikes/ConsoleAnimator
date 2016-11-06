@@ -77,7 +77,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="AnimationControls.cs" />
-    <Compile Include="AnimationFrame.cs" />
     <Compile Include="Grids\AnimationGrid.cs" />
     <Compile Include="AnimationUC.xaml.cs">
       <DependentUpon>AnimationUC.xaml</DependentUpon>

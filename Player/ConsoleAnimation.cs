@@ -15,14 +15,16 @@ namespace Player
         public List<ConsoleFrame> FrameList { get; set; }
         public void RunAnimation()
         {
+            
             while (true)
             {
                 foreach (ConsoleFrame frame in FrameList)
                 {
+                    Console.Clear();
                     Console.CursorVisible = false;
                     frame.RunFrame();
                     Thread.Sleep(100);
-                    Console.Clear();
+                    
                 }
             }
             
