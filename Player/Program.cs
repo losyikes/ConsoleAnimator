@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ConsoleAnimator;
+
 
 namespace Player
 {
@@ -21,15 +21,17 @@ namespace Player
             Console.WriteLine(arg);
             
             FileHandler fileHandler = new FileHandler();
-            List<ConsoleFrame> frameList = fileHandler.ReadFromJsonFile<List<ConsoleFrame>>(arg);
-            foreach(ConsoleFrame cf in frameList)
-            {
-                foreach(ConsolePixel cp in cf.PixelList)
-                {
-                    Console.WriteLine("X:{0} Y:{1} Color: {2}", cp.X, cp.Y, cp.Color);
-                }
+            ConsoleAnimation animation = new ConsoleAnimation(fileHandler.ReadFromJsonFile<List<ConsoleFrame>>(arg));
+            animation.RunAnimation();
+            //List<ConsoleFrame> frameList = fileHandler.ReadFromJsonFile<List<ConsoleFrame>>(arg);
+            //foreach(ConsoleFrame cf in frameList)
+            //{
+            //    foreach(ConsolePixel cp in cf.PixelList)
+            //    {
+            //        Console.WriteLine("X:{0} Y:{1} Color: {2}", cp.X, cp.Y, cp.Color);
+            //    }
                 
-            }
+            //}
             Console.ReadKey();
         }
     }

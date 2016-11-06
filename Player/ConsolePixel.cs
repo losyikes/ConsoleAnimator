@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ConsoleAnimator
+namespace Player
 {
     public class ConsolePixel
     {

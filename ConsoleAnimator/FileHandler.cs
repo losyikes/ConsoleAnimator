@@ -30,7 +30,7 @@ namespace ConsoleAnimator
             TextWriter writer = null;
             try
             {
-                var contentsToWriteToFile = JsonConvert.SerializeObject(objectToWrite);
+                var contentsToWriteToFile = JsonConvert.SerializeObject(objectToWrite, Formatting.Indented);
                 writer = new StreamWriter(filePath);
                 writer.Write(contentsToWriteToFile);
             }
