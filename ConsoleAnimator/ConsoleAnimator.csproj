@@ -59,16 +59,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="FileHandler.cs" />
-    <Compile Include="Frame.cs" />
-    <Compile Include="Pixel.cs" />
-    <Compile Include="Thumbnail.cs" />
-    <Compile Include="Grids\ThumbsGrid.cs" />
-    <Page Include="AnimationUC.xaml">
+    <Compile Include="Business\FileHandler.cs" />
+    <Compile Include="Model\ControlButton.cs" />
+    <Compile Include="Model\Frame.cs" />
+    <Compile Include="Model\Pixel.cs" />
+    <Compile Include="Model\Thumbnail.cs" />
+    <Compile Include="View\Grids\ThumbsGrid.cs" />
+    <Page Include="View\AnimationUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ChooseResUC.xaml">
+    <Page Include="View\ChooseResUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -76,20 +77,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="AnimationControls.cs" />
-    <Compile Include="Grids\AnimationGrid.cs" />
-    <Compile Include="AnimationUC.xaml.cs">
+    <Compile Include="Business\AnimationControls.cs" />
+    <Compile Include="View\Grids\AnimationGrid.cs" />
+    <Compile Include="View\AnimationUC.xaml.cs">
       <DependentUpon>AnimationUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Grids\ButtonGrid.cs" />
-    <Compile Include="ChooseResUC.xaml.cs">
+    <Compile Include="View\Grids\ButtonGrid.cs" />
+    <Compile Include="View\ChooseResUC.xaml.cs">
       <DependentUpon>ChooseResUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ColorGrid.cs" />
+    <Compile Include="View\Grids\ColorGrid.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

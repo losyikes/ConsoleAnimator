@@ -25,66 +25,32 @@ namespace ConsoleAnimator
         }
         void drawButtons()
         {
-            int buttonWidth = 125;
-            int buttonHeight = 25;
-
-            Button renderBtn = new Button();
-            renderBtn.Content = "Add Frame";
-            renderBtn.Width = buttonWidth;
-            renderBtn.Height = 25;
-            renderBtn.VerticalAlignment = VerticalAlignment.Top;
-            renderBtn.HorizontalAlignment = HorizontalAlignment.Left;
-            renderBtn.BorderBrush = Brushes.Black;
-            renderBtn.BorderThickness = new Thickness(1);
-            renderBtn.Background = null;
-            renderBtn.Padding = new Thickness(10, 0, 10, 0);
+            Button renderBtn = new ControlButton("Add Frame", 1);
             renderBtn.Click += RenderBtn_Click;
-            renderBtn.Margin = new Thickness(10, 0,0,0);
             this.Children.Add(renderBtn);
 
-            Button clearGridBtn = new Button();
-            clearGridBtn.Content = "Clear Grid";
-            clearGridBtn.Width = buttonWidth;
-            clearGridBtn.Height = buttonHeight;
-            clearGridBtn.VerticalAlignment = VerticalAlignment.Top;
-            clearGridBtn.HorizontalAlignment = HorizontalAlignment.Left;
-            clearGridBtn.BorderBrush = Brushes.Black;
-            clearGridBtn.BorderThickness = new Thickness(1);
-            clearGridBtn.Background = null;
-            clearGridBtn.Padding = new Thickness(10, 0, 10, 0);
+            Button clearGridBtn = new ControlButton("Clear Grid", 2);
             clearGridBtn.Click += ClearGridBtn_Click;
-            clearGridBtn.Margin = new Thickness(10, buttonHeight + 10 , 0, 0);
             this.Children.Add(clearGridBtn);
 
-            Button saveThumbBtn = new Button();
-            saveThumbBtn.Content = "Save Frames";
-            saveThumbBtn.Width = buttonWidth;
-            saveThumbBtn.Height = buttonHeight;
-            saveThumbBtn.VerticalAlignment = VerticalAlignment.Top;
-            saveThumbBtn.HorizontalAlignment = HorizontalAlignment.Left;
-            saveThumbBtn.BorderBrush = Brushes.Black;
-            saveThumbBtn.BorderThickness = new Thickness(1);
-            saveThumbBtn.Background = null;
-            saveThumbBtn.Padding = new Thickness(10, 0, 10, 0);
+            Button saveThumbBtn = new ControlButton("Save Frames", 3);
             saveThumbBtn.Click += SaveThumbBtn_Click;
-            saveThumbBtn.Margin = new Thickness(10, buttonHeight * 2 + 20, 0, 0);
             this.Children.Add(saveThumbBtn);
 
-            Button runAnimationBtn = new Button();
-            runAnimationBtn.Content = "Run Animation";
-            runAnimationBtn.Width = buttonWidth;
-            runAnimationBtn.Height = buttonHeight;
-            runAnimationBtn.VerticalAlignment = VerticalAlignment.Top;
-            runAnimationBtn.HorizontalAlignment = HorizontalAlignment.Left;
-            runAnimationBtn.BorderBrush = Brushes.Black;
-            runAnimationBtn.BorderThickness = new Thickness(1);
-            runAnimationBtn.Background = null;
-            runAnimationBtn.Padding = new Thickness(10, 0, 10, 0);
+            Button loadThumbBtn = new ControlButton("Load Frames", 4);
+            loadThumbBtn.Click += LoadThumbBtn_Click;
+            this.Children.Add(loadThumbBtn);
+
+            Button runAnimationBtn = new ControlButton("Run Animation", 5);
             runAnimationBtn.Click += RunAnimationBtn_Click;
-            runAnimationBtn.Margin = new Thickness(10, buttonHeight * 3 + 30, 0, 0);
             this.Children.Add(runAnimationBtn);
 
             this.Width = renderBtn.Width + 10;
+        }
+
+        private void LoadThumbBtn_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void RunAnimationBtn_Click(object sender, RoutedEventArgs e)
