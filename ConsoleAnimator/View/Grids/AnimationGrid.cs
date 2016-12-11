@@ -76,6 +76,40 @@ namespace ConsoleAnimator
             }
             return pixelList;
         }
+        public void LoadThumbToGrid(Thumbnail thumb)
+        {
+            
+            this.Children.Clear();
+            int lblCounter = 0;
+            int marginLeft = 0;
+            int marginTop = 0;
+            int gridWidth = Convert.ToInt32(thumb.Width / 4);
+            foreach(Pixel pixel in thumb.PixelList)
+            {
+                lblCounter++;
+
+                Label lbl = new Label();
+                lbl.Background = pixel.Color;
+                lbl.Width = 20;
+                lbl.Height = 20;
+                lbl.HorizontalAlignment = HorizontalAlignment.Left;
+                lbl.VerticalAlignment = VerticalAlignment.Top;
+                lbl.HorizontalContentAlignment = HorizontalAlignment.Center;
+                lbl.VerticalContentAlignment = VerticalAlignment.Center;
+                lbl.Margin = new Thickness(marginLeft, marginTop, 0, 0);
+                lbl.BorderThickness = new Thickness(1);
+                lbl.BorderBrush = Brushes.Black;
+                lbl.MouseDown += new MouseButtonEventHandler(OnAnimationLblMouseDown);
+                this.Children.Add(lbl);
+                marginLeft += 22;
+                if(lblCounter % gridWidth == 0)
+                {
+                    marginTop += 22;
+                    marginLeft = 0;
+                }
+            }
+            
+        }
         void OnAnimationLblMouseDown(object sender, MouseButtonEventArgs e)
         {
             Label senderLbl = (Label)sender;

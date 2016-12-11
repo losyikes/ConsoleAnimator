@@ -50,7 +50,23 @@ namespace ConsoleAnimator
 
         private void LoadThumbBtn_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            string filename = "";
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.DefaultExt = ".json";
+            dlg.Filter = "Json Files (.json)|*.json";
+
+            Nullable<bool> result = dlg.ShowDialog();
+
+
+            if (result == true)
+            {
+                // Save document
+                filename = dlg.FileName;
+            }
+            fileHandler.Path = filename;
+            thumbnailList = fileHandler.ReadFromJsonFile<List<Thumbnail>>(filename);
+            animationControls.ThumbGrid.AddThumbnailListToGrid(thumbnailList);
+            
         }
 
         private void RunAnimationBtn_Click(object sender, RoutedEventArgs e)
@@ -63,7 +79,7 @@ namespace ConsoleAnimator
             string filename = "";
             // Configure save file dialog box
             SaveFileDialog dlg = new SaveFileDialog();
-            dlg.FileName = "Animation-1"; // Default file name
+            //dlg.FileName = "Animation-1"; // Default file name
             dlg.DefaultExt = ".json"; // Default file extension
             dlg.Filter = "Json Files (.json)|*.json"; // Filter files by extension
 

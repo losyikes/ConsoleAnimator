@@ -23,8 +23,8 @@ namespace ConsoleAnimator
         public Thumbnail(List<Pixel> pixelList, AnimationControls aControls)
         {
             PixelList = pixelList;
-            this.Width = aControls.AnimationGrid.CharacterWidth * 4;
-            this.Height = aControls.AnimationGrid.CharacterHeight * 4;
+            this.Width = Math.Sqrt(pixelList.Count()) * 4;
+            this.Height = Math.Sqrt(pixelList.Count()) * 4;
             this.HorizontalAlignment = HorizontalAlignment.Left;
             this.VerticalAlignment = VerticalAlignment.Top;
             this.Background = Brushes.Black;

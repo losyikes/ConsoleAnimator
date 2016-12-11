@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
+using System.Windows.Input;
 
 namespace ConsoleAnimator
 {
@@ -26,10 +27,30 @@ namespace ConsoleAnimator
         public void AddThumbnailToGrid()
         {
             Thumbnail thumb = new Thumbnail(animationControls.AnimationGrid.GetPixelList(), animationControls);
+            thumb.MouseDown += new MouseButtonEventHandler(LoadThumbnailToAnimationGrid);
             thumbnailList.Add(thumb);
             this.Dispatcher.Invoke(new Action(() => this.Children.Add(thumb)), DispatcherPriority.Render);
         }
-        
-        
+        public void AddThumbnailToGrid(Thumbnail thumb)
+        {
+            Thumbnail completeThumb = new Thumbnail(thumb.PixelList, animationControls);
+            completeThumb.MouseDown += new MouseButtonEventHandler(LoadThumbnailToAnimationGrid);
+            thumbnailList.Add(completeThumb);
+            this.Dispatcher.Invoke(new Action(() => this.Children.Add(completeThumb)), DispatcherPriority.Render);
+        }
+        public void AddThumbnailListToGrid(List<Thumbnail> thumbList)
+        {
+            this.Children.Clear();
+            thumbnailList = new List<Thumbnail>();
+            foreach(Thumbnail thumb in thumbList)
+            {
+                AddThumbnailToGrid(thumb);
+            }
+        }
+        private void LoadThumbnailToAnimationGrid(object sender, MouseButtonEventArgs e)
+        {
+            Thumbnail thumb = (Thumbnail)sender;
+            animationControls.AnimationGrid.LoadThumbToGrid(thumb);
+        }
     }
 }
