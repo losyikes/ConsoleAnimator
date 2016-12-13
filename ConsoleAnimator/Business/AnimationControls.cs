@@ -20,7 +20,7 @@ namespace ConsoleAnimator
     public class AnimationControls 
     {
         delegate void LayoutUpdate();
-        public SolidColorBrush currentColor { get; set; }
+        public SolidColorBrush CurrentColor { get; set; }
         public ColorGrid ChooseColorGrid { get; }
         public AnimationGrid AnimationGrid { get; }
         public ThumbsGrid ThumbGrid { get; }

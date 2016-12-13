@@ -18,7 +18,7 @@ namespace ConsoleAnimator
         {
             drawLabels();
             animationControls = aControls;
-            animationControls.currentColor = Brushes.Black;
+            animationControls.CurrentColor = Brushes.Black;
         }
         void drawLabels()
         {
@@ -79,7 +79,7 @@ namespace ConsoleAnimator
         {
             Label lbl = (Label)sender;
             // i chose to set the color in the tag instead of just using the background Property so it should be easier to convert to console colors
-            animationControls.currentColor = (SolidColorBrush)lbl.Tag;
+            animationControls.CurrentColor = (SolidColorBrush)lbl.Tag;
         }
     }
 

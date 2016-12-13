@@ -57,25 +57,7 @@ namespace ConsoleAnimator
             }
 
         }
-        public List<Pixel> GetPixelList()
-        {
-            List<Pixel> pixelList = new List<Pixel>();
-            int i = 0;
-            int y = 1;
-            foreach(Label lbl in this.Children)
-            {
-                i++;
-                int x = i;
-                Pixel pixel = new Pixel(x, y,(SolidColorBrush)lbl.Background);
-                pixelList.Add(pixel);
-                if(i == this.CharacterWidth)
-                {
-                    i = 0;
-                    y++;
-                }
-            }
-            return pixelList;
-        }
+        
         public void LoadThumbToGrid(Thumbnail thumb)
         {
             
@@ -113,7 +95,7 @@ namespace ConsoleAnimator
         void OnAnimationLblMouseDown(object sender, MouseButtonEventArgs e)
         {
             Label senderLbl = (Label)sender;
-            senderLbl.Background = animationControls.currentColor;
+            senderLbl.Background = animationControls.CurrentColor;
             senderLbl.Dispatcher.Invoke(DispatcherPriority.Render, EmptyDelegate);
         }
         public void ClearGrid()

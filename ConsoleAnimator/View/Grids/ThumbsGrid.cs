@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace ConsoleAnimator
 {
@@ -24,9 +25,29 @@ namespace ConsoleAnimator
             this.HorizontalAlignment = HorizontalAlignment.Left;
             this.VerticalAlignment = VerticalAlignment.Top;
         }
+        public Frame GetFrame(AnimationGrid aGrid)
+        {
+            List<Pixel> pixelList = new List<Pixel>();
+            int i = 0;
+            int y = 1;
+            foreach (Label lbl in this.Children)
+            {
+                i++;
+                int x = i;
+                Pixel pixel = new Pixel(x, y, (SolidColorBrush)lbl.Background);
+                pixelList.Add(pixel);
+                if (i == aGrid.CharacterWidth)
+                {
+                    i = 0;
+                    y++;
+                }
+            }
+            Frame frame = new ConsoleAnimator.Frame(pixelList);
+            return frame;
+        }
         public void AddThumbnailToGrid()
         {
-            Thumbnail thumb = new Thumbnail(animationControls.AnimationGrid.GetPixelList(), animationControls);
+            Thumbnail thumb = new Thumbnail(this.GetFrame(animationControls.AnimationGrid), animationControls);
             thumb.MouseDown += new MouseButtonEventHandler(LoadThumbnailToAnimationGrid);
             thumbnailList.Add(thumb);
             this.Dispatcher.Invoke(new Action(() => this.Children.Add(thumb)), DispatcherPriority.Render);
